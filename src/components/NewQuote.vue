@@ -8,7 +8,7 @@
             </div>
             <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-md-6 col-md-offset-3 form-group">
                 <!--ToDo: Add a click event with .prevent and set it equal to the createNew method created below-->
-                <button class="btn btn-primary">Add Quote</button>
+                <button class="btn btn-primary" @click="createNew(quote)">Add Quote</button>
             </div>
         </form>
     </div>
@@ -24,7 +24,14 @@
         },
         methods: {
             // ToDo: Create a method createNew that emits an event listener named quoteAdded that passes the quote data object
+            createNew: function()
+            {
+                this.quotes.push(quoteAdded)
                 // Re-initialize quote to an empty string
+                this.quote = ''
+            },
+
+
         }
     }
 </script>

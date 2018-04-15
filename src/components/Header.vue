@@ -8,6 +8,7 @@
                         <!--Remember to multiple the the divided total by 100 and adding the '%' to get a percentage-->
                     <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
                         <!--ToDo: Output the number of quotes displayed on the page out of the max quotes-->
+                        {{maxQuotes}}
                     </div>
                 </div>
             </div>
@@ -19,5 +20,7 @@
     export default {
         // ToDo: Create props that are being passed in App.vue (quoteCount & maxQuotes)
             // Note: use normal array syntax, to pass more then 1 separate by comma
+        quoteCount: 1,
+        quotesMax: 10
     }
 </script>

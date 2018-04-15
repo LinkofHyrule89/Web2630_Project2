@@ -3,6 +3,7 @@
         <div class="panel panel-default">
             <div class="panel-body quote">
                 <!--ToDo: Add default slot tag for passing the quote-->
+                <slot></slot>
             </div>
         </div>
     </div>
@@ -17,7 +18,7 @@
         /*Set a color of your choice*/
     .panel
     {
-        font-family: Roboto;
+        font-family: Roboto, serif;
         color: #3d7de5;
     }
 

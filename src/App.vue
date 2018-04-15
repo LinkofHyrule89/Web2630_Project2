@@ -3,22 +3,23 @@
         <!--ToDo: Use the Header component selector-->
         <appHeader>
             <!--Bind data props quoteCount and set it equal to the quote length-->
-            {{quoteCount}}
+            {{quoteCount = quotes.length}}
             <!--Bind data props maxQuotes and set it equal to the maxQuotes created below-->
             {{maxQuotes}}
         </appHeader>
 
 
         <!--ToDo: Use the NewQuote component selector-->
-        <appNewQuote v-on:click="quoteAdd = newQuote">
+        <appNewQuote>
             <!--Initiate an $emit event listener called quoteAdded that is equal to newQuote-->
-            
+            {{quoteAdded = newQuote}}
         </appNewQuote>
 
         <!--ToDo: Use the QuoteGrid component selector-->
         <appQuoteGrid>
             <!--Bind data props quotes and set it equal to the quotes array created below-->
             <!--Call quoteDeleted that is emitted from the QuoteGrid Component and pass the deleteQuote method created below-->
+            {{quotes = this.quotes}}
         </appQuoteGrid>
 
         <div class="row">
@@ -52,13 +53,20 @@
                 // This method will check if the quotes (Array Data Object) length is greater than or equal to the max quotes allowed
                 // If it is return an alert telling the user to delete a quote
                 // Outside of conditional, push quote (method parameter) to the quotes array
-
+                newQuote: function(thisQuote)
+                {
+                  if (this.quotes.length <= this.maxQuotes)
+                  {
+                      return alert('You already have 10 quotes please delete one!')
+                  }
+                  this.quotes.push(thisQuote)
+                },
 
             // ToDo: Create a method deleteQuote that takes in a parameter of index
                 // This method will splice the quotes array by (index, 1)
                 deleteQuote: function(index)
                 {
-                    this.items.splice(index, 1);
+                    this.quotes.splice(index, 1);
                 }
         },
         components: {
