@@ -1,25 +1,21 @@
 <template>
     <div class="container">
         <!--ToDo: Use the Header component selector-->
-        <appHeader>
+        <appHeader :quoteCount="quotes.length" :maxQuotes="maxQuotes">
             <!--Bind data props quoteCount and set it equal to the quote length-->
-            {{quoteCount = quotes.length}}
             <!--Bind data props maxQuotes and set it equal to the maxQuotes created below-->
-            {{maxQuotes}}
         </appHeader>
 
 
         <!--ToDo: Use the NewQuote component selector-->
-        <appNewQuote>
+        <appNewQuote @quoteAdded="newQuote">
             <!--Initiate an $emit event listener called quoteAdded that is equal to newQuote-->
-            {{quoteAdded = newQuote}}
         </appNewQuote>
 
         <!--ToDo: Use the QuoteGrid component selector-->
-        <appQuoteGrid>
+        <appQuoteGrid :quotes="quotes" @quoteDeleted="deleteQuote">
             <!--Bind data props quotes and set it equal to the quotes array created below-->
             <!--Call quoteDeleted that is emitted from the QuoteGrid Component and pass the deleteQuote method created below-->
-            {{quotes = this.quotes}}
         </appQuoteGrid>
 
         <div class="row">
@@ -34,7 +30,6 @@
 //  Todo: Import QuoteGrid, NewQuote, and Header Components
     import Header from './components/Header.vue';
     import NewQuote from './components/NewQuote.vue';
-    import Quote from './components/Quote.vue';
     import QuoteGrid from './components/QuoteGrid.vue';
 
     export default {
@@ -55,7 +50,7 @@
                 // Outside of conditional, push quote (method parameter) to the quotes array
                 newQuote: function(thisQuote)
                 {
-                  if (this.quotes.length <= this.maxQuotes)
+                  if (this.quotes.length >= this.maxQuotes)
                   {
                       return alert('You already have 10 quotes please delete one!')
                   }
@@ -73,7 +68,6 @@
             // ToDo: Initiate the QuoteGrid, NewQuote, and Header Components with Custom Selectors
             appHeader: Header,
             appNewQuote: NewQuote,
-            appQuote: Quote,
             appQuoteGrid: QuoteGrid
         }
         
